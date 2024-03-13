@@ -1,0 +1,27 @@
+{
+  "name": "challenge02-crud-node-postgres",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zhaily94/CHALLENGE02-CRUD-NODE-POSTGRES.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zhaily94/CHALLENGE02-CRUD-NODE-POSTGRES/issues"
+  },
+  "homepage": "https://github.com/Zhaily94/CHALLENGE02-CRUD-NODE-POSTGRES#readme",
+  "dependencies": {
+    "express": "^4.18.3",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0" 
+  }
+}
