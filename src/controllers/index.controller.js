@@ -13,6 +13,12 @@ const getUsers = async (req, res) => { // creamos una ruta usuarios con dos para
     res.status(200).json(response.rows); // le mandamos los datos a res por medio de un json en renglones
 }
 
+const getUserById = async (req, res) => {
+    const id = req.params.id;
+    const response = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
+    res.json(response.rows)
+}
+
 const createUser = async (req, res) => {
     const {name, email, post} = req.body; //trae los datos que la aplicacion cliente va a traer 
     const response = await pool.query('INSERT INTO users (name, email, post) VALUES ($1, $2, $3)', [name, email, post]);
@@ -27,5 +33,6 @@ const createUser = async (req, res) => {
 
 module.exports = {
     getUsers,
-    createUser
+    createUser,
+    getUserById
 };
