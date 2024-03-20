@@ -19,6 +19,20 @@ const getUserById = async (req, res) => {
     res.json(response.rows)
 }
 
+const updateUser = async (req, res) => {
+    const id = req.params.id;
+    const {name, email, post} = req.body;
+    const response = await pool.query('UPDATE users SET name = $1, email = $2, post = $3 WHERE id = $4', [
+        name,
+        email,
+        post,
+        id
+    ]);
+    console.log(response)
+    res.json('User updated successfully!')
+
+}
+
 const createUser = async (req, res) => {
     const {name, email, post} = req.body; //trae los datos que la aplicacion cliente va a traer 
     const response = await pool.query('INSERT INTO users (name, email, post) VALUES ($1, $2, $3)', [name, email, post]);
@@ -31,8 +45,17 @@ const createUser = async (req, res) => {
     })
 };
 
+const deleteUser = async (req, res) =>{
+    const id = req.params.id;
+    const response = await pool.query('DELETE FROM users WHERE id = $1', [id]);
+    console.log(response);
+    res.json(`User ${id} deleted successfully!`)
+}
+
 module.exports = {
     getUsers,
     createUser,
-    getUserById
+    getUserById,
+    deleteUser,
+    updateUser
 };
